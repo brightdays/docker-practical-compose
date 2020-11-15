@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  server:
+    container_name: teamcity-server
+    image: jetbrains/teamcity-server
+    volumes:
+    - ~/Desktop/teamcity/server/data:/data/teamcity_server/datadir
+    - ~/Desktop/teamcity/server/logs:/opt/teamcity/logs
+    ports:
+    - 8111:8111
+  agent1:
+    container_name: agent1
+    image: jetbrains/teamcity-agent
+    volumes: 
+    - ~/Desktop/teamcity/agents1:/data/teamcity_agent/conf
+    environment:
+    - SERVER_URL=http://server:8111
+    ports:
+    - 8223
+  agent2:
+    container_name: agent2
+    image: jetbrains/teamcity-agent
+    volumes: 
+    - ~/Desktop/teamcity/agents2:/data/teamcity_agent/conf
+    # - ~/Desktop/teamcity/agents1:/data/teamcity_agent/conf
+    # - ~/Desktop/teamcity/agents1:/data/teamcity_agent/conf
+    # - ~/Desktop/teamcity/agents1:/var/lib/docker
+    # privileged: true
+    environment:
+    - SERVER_URL=http://server:8111
+    # links:
+    #   - "server:teamcityserver" # alias teamcityserver = server
+    ports:
+    - 8222
+    # - DOCKER=start
