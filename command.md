@@ -7,7 +7,16 @@ docker-compose run app1 app2
 - myapp_default network is created
 - Default containers are reachable using service
 - All services (default on key name - override using --project-name or COMPOSE_PROJECT_NAME) join default_network using its 
+- Access to other container using app name defined in yml under services
+```yml
+services
+    server:
+    #   ....
+    agent1: 
+        wnvironment:
+        - SERVER_URL=http://server:8111
 
+```
 ## Resolve network
 - Use [link](#links) --link option or connect to some network
 - --network="host" localhost:8111 will refer to server container resolve by host
@@ -25,4 +34,4 @@ docker-compose run app1 app2
 
 # References
 - https://docs.docker.com/compose/compose-file/
-- 
+- Full docker  : https://medium.com/@mazhar.ansari/dockerised-installation-of-teamcity-server-and-agent-21bcc164af47
