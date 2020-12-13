@@ -13,7 +13,7 @@ services
     server:
     #   ....
     agent1: 
-        wnvironment:
+        environment:
         - SERVER_URL=http://server:8111
 
 ```

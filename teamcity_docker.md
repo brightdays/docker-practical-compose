@@ -1,3 +1,21 @@
+# Generate PEM Key
+- enter command
+- enter key name
+- Get private and public key
+- Copy public key
+- Upload private key to Teamcity
+```sh
+    ssh-keygen -t rsa -m PEM
+```
+
+Optional - copy to server
+```sh
+    brew install ssh-copy-id
+    ssh-copy-id demo@198.51.100.0
+    // OR USE
+    cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+
+```
 
 # Add build steps
 - Prints out counter number and branch that was triggered
